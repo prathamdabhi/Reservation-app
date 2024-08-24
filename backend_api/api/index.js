@@ -1,6 +1,11 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import authRout from './routes/auth.js'
+import hotelRout from './routes/hotel.js'
+import userRout from './routes/users.js'
+import roomRout from './routes/room.js'
+
 const app = express();
 const port = 8800;
 dotenv.config();
@@ -24,9 +29,17 @@ mongoose.connection.on("connected",()=>{
   console.log("mongodb is connected!")
 })
 
-app.get("/users",(req,res)=>{
-  res.send("i am user response")
-})
+// end points
+app.use(express.json());
+app.use("/api/auth",authRout);
+app.use("/api/users",userRout);
+app.use("/api/hotel",hotelRout);
+app.use("/api/room",roomRout);
+
+// app.use((err,req,res,next)=>{
+//   return res.status(500).json("hello error are occured")
+// })
+
 
 app.listen(port, () => {
     connect()
