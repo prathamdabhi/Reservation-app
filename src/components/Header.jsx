@@ -8,23 +8,24 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format} from 'date-fns'
 import { DateRange } from "react-date-range";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons/faCalendarDay";
 import { faPerson } from "@fortawesome/free-solid-svg-icons/faPerson";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../context/SearchContext";
 
 function Header({type}) {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
   const [openOption, setOpenOption] = useState(false);
   const [option, setOption] = useState({
-    adult:0,
+    adult:1,
     children:0,
-    room:0
+    room:1
   });
   const navigate = useNavigate();
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -36,9 +37,10 @@ function Header({type}) {
         return {...prev,[name]:operation === "i" ? option[name] + 1 : option[name] - 1 }
       })
   }
-
+  const {dispatch} = useContext(SearchContext)
   const onsearch = ()=>{
-      navigate('/hotels',{state:{destination,date,option}})
+    dispatch({type:"NEW_SEARCH",payload:{destination,dates,option}})
+      navigate('/hotel',{state:{destination,dates,option}})
   }
 
   return (
@@ -119,12 +121,12 @@ function Header({type}) {
               icon={faCalendarDay}
               className="cursor-pointer text-blue-600 "
             />
-            <span onClick={()=>{setOpenDate(!openDate)}} className=" text-gray-500 cursor-pointer">{`${format(date[0].startDate,'dd/mm/yyyy')} to ${format(date[0].endDate,'dd/mm/yyyy')} `}</span>
+            <span onClick={()=>{setOpenDate(!openDate)}} className=" text-gray-500 cursor-pointer">{`${format(dates[0].startDate,'dd/mm/yyyy')} to ${format(dates[0].endDate,'dd/mm/yyyy')} `}</span>
             {openDate && <DateRange
               editableDateInputs={true}
-              onChange={(item) => setDate([item.selection])}
+              onChange={(item) => setDates([item.selection])}
               moveRangeOnFirstSelection={false}
-              ranges={date}
+              ranges={dates}
               minDate={new Date()}
               className="absolute z-[1] top-[40px]"
             />}

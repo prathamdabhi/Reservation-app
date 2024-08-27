@@ -5,9 +5,12 @@ import authRout from './routes/auth.js'
 import hotelRout from './routes/hotel.js'
 import userRout from './routes/users.js'
 import roomRout from './routes/room.js'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
 const app = express();
 const port = 8800;
+
 dotenv.config();
 
 
@@ -28,8 +31,9 @@ mongoose.connection.on("disconnected",()=>{
 mongoose.connection.on("connected",()=>{
   console.log("mongodb is connected!")
 })
-
+app.use(cors())
 // end points
+app.use(cookieParser())
 app.use(express.json());
 app.use("/api/auth",authRout);
 app.use("/api/users",userRout);

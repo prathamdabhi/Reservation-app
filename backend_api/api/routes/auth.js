@@ -1,6 +1,7 @@
 import express from 'express'
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 //Register
 const router = express.Router();
@@ -32,8 +33,12 @@ router.post("/login",async (req,res)=>{
     if(!comparePass){
         res.send("user name and password is not correct");
     }
+    const token = jwt.sign({id:user._id,isAdmin:user.isAdmin},process.env.JWT)
+
     const {password,isAdmin, ...otherDetails} =user._doc;
-    res.status(200).json({ ...otherDetails });
+    res.cookie("token",token,{
+        httpOnly:true
+    }).status(200).json({ ...otherDetails });
 
 
    } catch (error) {

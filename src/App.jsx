@@ -10,6 +10,7 @@ import Home from './components/Home';
 
 import List from './components/List';
 import Hotel from './hotels/Hotel';
+import Login from './components/Login';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,8 +20,9 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/hotels' element={<List/>} />
-        <Route path='/hotels:id' element={<Hotel/>} />
+        <Route path='/hotel' element={<List/>} />
+        <Route path='/hotel/:id' element={<Hotel/>} />
+        <Route path='/login' element={<Login/>} />
         
       </Routes>
       </BrowserRouter>
