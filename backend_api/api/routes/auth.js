@@ -29,7 +29,7 @@ router.post("/login",async (req,res)=>{
     if(!user){
         res.send("user not found ");
     }
-    const comparePass = await bcrypt.compareSync(req.body.password, user.password); // true
+    const comparePass =  bcrypt.compareSync(req.body.password, user.password); // true
     if(!comparePass){
         res.send("user name and password is not correct");
     }

@@ -7,8 +7,10 @@ import Footer from '../components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons/faLocationDot'
 import useFatch from '../hookes/usefetch';
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { SearchContext } from '../context/SearchContext'
+import { AuthContext } from '../context/AuthContext'
+import Reserve from '../components/Reserve'
 
 
 function Hotel() {
@@ -20,12 +22,14 @@ function Hotel() {
       endDate: new Date(),
       key: "selection",
   }])
+  const navigate = useNavigate();
   const [slidenumber, setSlidenumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModel, setOpenModel] = useState(false);
   const {datas,loading,error} = useFatch(`http://localhost:8800/api/hotel/find/${id}`);
 
   const {dates, option} = useContext(SearchContext)
-  console.log(dates)
+  const {user} = useContext(AuthContext);
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
@@ -33,7 +37,7 @@ function Hotel() {
     return diffDays;
   }
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
-  console.log(days)
+  
   // const photos = [
   //   {
   //     id:1,
@@ -65,6 +69,13 @@ function Hotel() {
     setSlidenumber(i);
     setOpen(!open);
   }
+  const handleClick = ()=>{
+    if(user){
+      setOpenModel(true);
+    }else{
+      navigate("/login")
+    }
+  }
   return (
     <div>
       <Navbar/>
@@ -91,7 +102,7 @@ function Hotel() {
             </span>
             </div>
             <div className="right-wrapper relative flex-[1]">
-            <button className=' absolute top-[51px] left-[50px] nav-button text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5  text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mt-2 mx-1 h-[29px] mb-[10px]'>Reserve For Book Now!</button>
+            <button onClick={handleClick} className=' absolute top-[51px] left-[50px] nav-button text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5  text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mt-2 mx-1 h-[29px] mb-[10px]'>Reserve For Book Now!</button>
             </div>
             </div>
             <div className="hotel-images flex flex-wrap justify-evenly gap-y-2.5">
@@ -115,7 +126,7 @@ function Hotel() {
                 <h1 className='text-2xl mt-[5px] ml-[9px]'>Perfect For {days} Nights Stand</h1>
                 <span className='text-[13px] ml-[9px]'>located in the real heart of UK. This property has an excellent location score of <b>8.9</b></span>
                 <strong className='ml-[9px]' >`${ days * datas.cheapestprice * option.room } {days} Nights`</strong> 
-                <button className='nav-button w-max text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5  text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mt-2 mx-1 h-[29px] ml-[5px] mb-[10px]'>Reserve For Book Now</button>
+                <button onClick={handleClick} className='nav-button w-max text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5  text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mt-2 mx-1 h-[29px] ml-[5px] mb-[10px]'>Reserve For Book Now</button>
               </div>
             </div>
            
@@ -123,6 +134,7 @@ function Hotel() {
       </div>)}
       <MailForm/>
       <Footer/>
+      {openModel && <Reserve setOpenModel={setOpenModel} hotelId={id}/>}
     </div>
   )
 }

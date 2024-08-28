@@ -33,6 +33,20 @@ router.put("/:id",verifyAdmin,async(req,res)=>{
        res.status(500).json.apply(error)
     }
     })
+//update Room
+router.put("/availablety/:id",async(req,res)=>{
+   try {
+     await Room.updateOne({"roomNumbers._id":req.params.id},{
+      $push:{"roomNumbers.$.unavailableDate":req.body.dates},
+     })
+      res.status(200).json("hotel room date is update successfully");
+      
+   } catch (error) {
+      res.status(500).json.apply(error)
+   }
+   })
+
+
  //delete
     router.delete("/:id/:hotelid",verifyAdmin,async(req,res)=>{
        try {

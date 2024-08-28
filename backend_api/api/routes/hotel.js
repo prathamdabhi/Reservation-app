@@ -1,5 +1,6 @@
 import express from 'express'
 import Hotel from '../models/Hotel.js'
+import Room from '../models/Room.js'
 import { verifyAdmin } from '../utils/VerifyToken.js'
 
 const router = express.Router()
@@ -92,6 +93,18 @@ router.get("/find/:id",async(req,res)=>{
    } catch (error) {
       res.status(500).json.apply(error)
    }
+   })
+   //Get Hotel Rooms
+   router.get("/room/:id",async(req,res,next)=>{
+      try {
+         const hotel = await Hotel.findById(req.params.id)
+         const list = await Promise.all(hotel.rooms.map(rooms=>{
+             return Room.findById(rooms);
+         }))
+         res.status(200).json(list);
+      } catch (error) {
+         res.status(401).json(error)
+      }
    })
 
 export default router

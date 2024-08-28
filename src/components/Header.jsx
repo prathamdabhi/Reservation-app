@@ -14,6 +14,7 @@ import { faCalendarDay } from "@fortawesome/free-solid-svg-icons/faCalendarDay";
 import { faPerson } from "@fortawesome/free-solid-svg-icons/faPerson";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../context/SearchContext";
+import { AuthContext } from "../context/AuthContext";
 
 function Header({type}) {
   const [destination, setDestination] = useState("");
@@ -24,6 +25,9 @@ function Header({type}) {
     children:0,
     room:1
   });
+
+  const navigation = useNavigate()
+  const {user} = useContext(AuthContext);
   const navigate = useNavigate();
   const [dates, setDates] = useState([
     {
