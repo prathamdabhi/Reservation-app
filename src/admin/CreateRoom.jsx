@@ -19,7 +19,8 @@ function CreateRoom() {
     };
 
     const handleRoomNumbersChange = (e) => {
-        setRoom(prev => ({ ...prev, roomNumbers: e.target.value.split(",") }));
+        const roomNumbers = e.target.value.split(",").map(num => ({ number: Number(num) }));
+        setRoom(prev => ({ ...prev, roomNumbers }));
     };
 
     const handleSubmit = async (e) => {

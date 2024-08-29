@@ -36,7 +36,8 @@ function Hotel() {
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return diffDays;
   }
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  // const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dates && dates[0] ? dayDifference(dates[0].endDate, dates[0].startDate) : 0;
   
   const photos = [
     {
