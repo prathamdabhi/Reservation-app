@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='footer w-full  text-[15px]   '>
+    <div className='footer w-screen  text-[15px]   '>
         <div className="f-lists max-w-screen-xl flex gap-8 justify-around items-center cursor-pointer my-3 ">
            <ul className="f-list ">
             <li className="f-item">Countries</li>

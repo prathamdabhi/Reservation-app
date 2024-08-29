@@ -12,6 +12,11 @@ import List from './components/List';
 import Hotel from './hotels/Hotel';
 import Login from './components/Login';
 import Thank from './components/Thank';
+import Register from './components/Register';
+import Admin from './admin/admin';
+import CreateHotel from './admin/CreateHotel';
+import CreateRoom from './admin/CreateRoom';
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +30,10 @@ function App() {
         <Route path='/hotel/:id' element={<Hotel/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/thank' element={<Thank/>} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/admin' element={<Admin/>} />
+        <Route path='/addhotel' element={<CreateHotel/>} />
+        <Route path='/addroom' element={<CreateRoom/>} />
         
       </Routes>
       </BrowserRouter>
@@ -33,3 +42,4 @@ function App() {
 }
 
 export default App
+

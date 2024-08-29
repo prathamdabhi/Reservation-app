@@ -74,7 +74,7 @@ function Reserve({setOpenModel, hotelId}) {
                       </div>
                 </div>
             })}
-           <button onClick={handleClickReserve} className='r-button  text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm    inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mt-2 mx-1 h-[29px] mb-[10px] w-[90%] px-[10rem] ml-[15px] '>Reserve Now!</button> 
+           <button onClick={handleClickReserve} className='r-button  text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm    inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mt-2 mx-1 h-[29px] mb-[10px] w-[95%] px-[10rem] ml-[15px] '>Reserve Now!</button> 
       </div>
     </div>
   )

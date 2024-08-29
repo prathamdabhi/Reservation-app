@@ -39,7 +39,7 @@ router.post("/login",async (req,res)=>{
     res.cookie("token",token,{
         httpOnly:true
     }).status(200).json({ ...otherDetails });
-
+    
 
    } catch (error) {
     res.status(500).json(error)

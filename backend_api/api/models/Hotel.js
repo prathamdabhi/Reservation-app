@@ -42,6 +42,7 @@ const HotelSchema = new mongoose.Schema({
     rooms:{
         type:[String],
     },
+    //  rooms: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Room' }],
     cheapestprice:{
         type:Number,
         required:true

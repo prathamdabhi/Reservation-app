@@ -263,3 +263,31 @@
     cursor: not-allowed;
   }
   /* ############################### login style ################# */
+  .register{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .r-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .r-input{
+    height: 30px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+  }
+  .r-btn{
+    border: none;
+    padding: 10px 20px;
+    background-color: #0071c2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+    /* ############################### Register style ################# */

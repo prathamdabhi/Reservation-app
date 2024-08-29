@@ -7,7 +7,7 @@ import { verifyAdmin } from '../utils/VerifyToken.js'
 const router = express.Router()
 
 //create
-router.post("/:hotelid",verifyAdmin,async (req,res)=>{
+router.post("/:hotelid",async (req,res)=>{
     const hotelId = req.params.hotelid;
     const newRoom = new Room(req.body)
     try {
@@ -22,6 +22,8 @@ router.post("/:hotelid",verifyAdmin,async (req,res)=>{
         res.send("new room is not created")
     }
 })
+
+
 
 //Update
 router.put("/:id",verifyAdmin,async(req,res)=>{

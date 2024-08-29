@@ -13,13 +13,13 @@ const RoomSchema = new mongoose.Schema({
     },
     maxPeaple:{
         type:Number,
-        required:true
+        
     },
     desc:{
         type:String,
         required:true
     },
-    roomNumbers:[{number:Number, unavailableDate:{type:[Date]}}]
+    roomNumbers:[{type:Number, unavailableDate:{type:[Date]}}]
 },
 {timestamps:true})
 export default mongoose.model("Room",RoomSchema);

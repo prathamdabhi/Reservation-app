@@ -5,18 +5,32 @@ import { verifyAdmin } from '../utils/VerifyToken.js'
 
 const router = express.Router()
 // create
-router.post("/",verifyAdmin,async(req,res)=>{
+const verifyToken = (req, res, next) => {
+   const token = req.cookies.token;
+   if (!token) {
+       req.user = null; // No user associated with the request
+       return next();
+   }
 
-    const newHotel = new Hotel(req.body)
-    
- try {
-    const saveHotel = await newHotel.save()
-    res.status(200).json(saveHotel);
-    
- } catch (error) {
-    res.status(500).json.apply(error)
- }
-})
+   jwt.verify(token, process.env.JWT, (err, user) => {
+       if (err) {
+           return res.status(403).send("Token is not valid");
+       }
+       req.user = user;
+       next();
+   });
+};
+
+router.post("/", async (req, res) => {
+   const newHotel = new Hotel(req.body);
+   
+   try {
+       const savedHotel = await newHotel.save();
+       return res.status(200).json(savedHotel);
+   } catch (error) {
+       return res.status(500).json(error);
+   }
+});
 //update
 router.put("/:id",verifyAdmin,async(req,res)=>{
 try {
