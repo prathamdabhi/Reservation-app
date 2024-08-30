@@ -110,7 +110,7 @@ function CreateHotel() {
                 ></textarea>
                 <input 
                     type="number" 
-                    placeholder="Rating (0-5)" 
+                    placeholder="Rating should be 1 to 5" 
                     id="rating" 
                     value={hotel.rating}
                     onChange={handleChange} 
