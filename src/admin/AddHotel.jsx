@@ -9,6 +9,9 @@ function AddHotel() {
     const gotoAddRoom = ()=>{
         navigate("/addroom")
     }
+    const gotoreport = ()=>{
+        navigate("/reports")
+    }
   return (
     <div className="flex justify-center items-center h-[65vh] w-full bg-gray-100">
     <div className="flex flex-col items-center bg-white shadow-md rounded-lg p-6 w-[28%]">
@@ -16,15 +19,21 @@ function AddHotel() {
         <div className="flex flex-col gap-4">
             <button 
                 onClick={gotoAddHotel} 
-                className="bg-[#1da1f2] text-white hover:bg-[#1da1f2]/90 focus:ring-4 focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white hover:bg-[#1da1f2]/90 focus:ring-4 focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
                 Add Hotel
             </button>
             <button 
                 onClick={gotoAddRoom} 
-                className="bg-[#1da1f2] text-white hover:bg-[#1da1f2]/90 focus:ring-4 focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white hover:bg-[#1da1f2]/90 focus:ring-4 focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
                 Add Room
+            </button>
+            <button 
+                onClick={gotoreport} 
+                className="bg-cyan-500 shadow-lg shadow-cyan-500/50 text-white hover:bg-[#1da1f2]/90 focus:ring-4 focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            >
+                Reports
             </button>
         </div>
     </div>

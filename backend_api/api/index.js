@@ -40,6 +40,10 @@ app.use("/api/users",userRout);
 app.use("/api/hotel",hotelRout);
 app.use("/api/room",roomRout);
 
+
+
+
+
 // app.use((err,req,res,next)=>{
 //   return res.status(500).json("hello error are occured")
 // })

@@ -38,15 +38,15 @@ router.put("/:id",verifyUser,async(req,res)=>{
        })
     
     //get
-    router.get("/:id",verifyUser,async(req,res)=>{
-       try {
-          const user = await User.findById(req.params.id);
-          res.status(200).json(user);
+   //  router.get("/:id",verifyUser,async(req,res)=>{
+   //     try {
+   //        const user = await User.findById(req.params.id);
+   //        res.status(200).json(user);
           
-       } catch (error) {
-          res.status(500).json.apply(error)
-       }
-       })
+   //     } catch (error) {
+   //        res.status(500).json.apply(error)
+   //     }
+   //     })
     //get all
     router.get("/",verifyAdmin,async(req,res)=>{
        try {
@@ -57,5 +57,17 @@ router.put("/:id",verifyUser,async(req,res)=>{
           res.status(500).json.apply(error)
        }
        })
+       // user report
+       router.get('/userReport', async (req, res) => {
+         try {
+             // Fetch all users from the database
+             const users = await User.find();
+     
+             // Send the user data as JSON
+             res.json(users);
+         } catch (error) {
+             res.status(500).json({ message: error.message });
+         }
+     });
 
 export default router

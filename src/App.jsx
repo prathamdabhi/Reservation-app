@@ -16,6 +16,10 @@ import Register from './components/Register';
 import Admin from './admin/admin';
 import CreateHotel from './admin/CreateHotel';
 import CreateRoom from './admin/CreateRoom';
+import HotelReport from './admin/HotelReport';
+import RoomReport from './admin/RoomReport';
+import UserReport from './admin/UserReport';
+import Reports from './admin/Reports';
 
 
 function App() {
@@ -34,6 +38,10 @@ function App() {
         <Route path='/admin' element={<Admin/>} />
         <Route path='/addhotel' element={<CreateHotel/>} />
         <Route path='/addroom' element={<CreateRoom/>} />
+        <Route path='/hotelReport' element={<HotelReport/>} />
+        <Route path='/roomReport' element={<RoomReport/>} />
+        <Route path='/userReport' element={<UserReport/>} />
+        <Route path='/reports' element={<Reports/>} />
         
       </Routes>
       </BrowserRouter>

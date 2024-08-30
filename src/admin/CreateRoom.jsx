@@ -6,7 +6,7 @@ function CreateRoom() {
         hotelId: "",
         title: "",
         price: 0,
-        maxPeople: 0,
+        maxPeaple: 0,
         desc: "",
         roomNumbers: []
     });
@@ -46,7 +46,7 @@ function CreateRoom() {
                 <input type="text" placeholder="Hotel ID" id="hotelId" onChange={handleChange} className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 <input type="text" placeholder="Room Title" id="title" onChange={handleChange} className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 <input type="number" placeholder="Price" id="price" onChange={handleChange} className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                <input type="number" placeholder="Max People" id="maxPeople" onChange={handleChange} className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input type="number" placeholder="Max People" id="maxPeaple" onChange={handleChange} className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 <textarea placeholder="Description" id="desc" onChange={handleChange} className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                 <input type="text" placeholder="Room Numbers (comma-separated)" id="roomNumbers" onChange={handleRoomNumbersChange} className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 <button onClick={handleSubmit} className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Create Room</button>

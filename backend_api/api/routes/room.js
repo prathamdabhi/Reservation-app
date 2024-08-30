@@ -15,11 +15,11 @@ router.post("/:hotelid",async (req,res)=>{
         try {
             await Hotel.findByIdAndUpdate(hotelId,{$push:{rooms:saveRoom._id}})
         } catch (error) {
-            res.send("new room is not created")
+            res.send(error)
         }
         res.status(200).json(saveRoom);
     } catch (error) {
-        res.send("new room is not created")
+        res.send(error)
     }
 })
 
@@ -67,15 +67,15 @@ router.put("/availablety/:id",async(req,res)=>{
        })
     
 //get
-    router.get("/:id",async(req,res)=>{
-       try {
-          const room = await Room.findById(req.params.id);
-          res.status(200).json(room);
+   //  router.get("/:id",async(req,res)=>{
+   //     try {
+   //        const room = await Room.findById(req.params.id);
+   //        res.status(200).json(room);
           
-       } catch (error) {
-          res.status(500).json.apply(error)
-       }
-       })
+   //     } catch (error) {
+   //        res.status(500).json.apply(error)
+   //     }
+   //     })
 //get all
     router.get("/",async(req,res)=>{
        try {
@@ -86,5 +86,17 @@ router.put("/availablety/:id",async(req,res)=>{
           res.status(500).json.apply(error)
        }
        })
+//room report
+      router.get('/report', async (req, res) => {
+   try {
+     // Fetch all rooms from the database
+     const roomsall = await Room.find();
+ 
+     // Return the room data as JSON
+     res.status(200).json(roomsall);
+   } catch (error) {
+     res.status(500).json({ message: error.message });
+   }
+ });
 
 export default router

@@ -121,4 +121,15 @@ router.get("/find/:id",async(req,res)=>{
       }
    })
 
+   //hotel report
+   router.get('/report', async (req, res) => {
+      try {
+          const hotels = await Hotel.find();
+          res.status(200).json(hotels);
+      } catch (err) {
+          res.status(500).json(err);
+      }
+  });
+  
+
 export default router
