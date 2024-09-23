@@ -30,8 +30,8 @@ function List() {
     <div>
      <Navbar/>
     <Header type="list" />
-    <div className="list-container flex justify-center mt-[20px]">
-      <div className="list-wrapper w-full max-w-screen-xl flex gap-5">
+    <div className="list-container  flex justify-center mt-[20px]">
+      <div className="list-wrapper  flex-col md:flex-row w-full max-w-screen-xl flex gap-5">
         <div className="list-search ">
           <h1 className="left text-2xl mb-2 text-gray-500 ">search</h1>
           <div className='ls-item  '>
@@ -85,4 +85,6 @@ function List() {
 }
 
 export default List
+
+
 

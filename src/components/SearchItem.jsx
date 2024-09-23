@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 function SearchItem({item}) {
     
   return (
-    <div className='search'>
-        <div className='s-container'>
+    <div className='search '>
+        <div className='s-container md:w-full w-[95%]'>
             <div className="s-item">
                 <img className='s-image' src={item.img[0]} alt="" />
             </div>
